@@ -1,3 +1,4 @@
-#1. use set
-def solve(nums1: list, nums2: list) -> list:
-    return set(nums1).intersection(set(nums2))
+# use set
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        return set(nums1).intersection(set(nums2))

@@ -1,4 +1,4 @@
-#1. solution using only one queue; not by myself
+# solution using only one queue; not by myself
 class MyStack:
 
     def __init__(self):

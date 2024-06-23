@@ -1,4 +1,4 @@
-#1. its ok
+# its ok
 class MyQueue:
 
     def __init__(self):

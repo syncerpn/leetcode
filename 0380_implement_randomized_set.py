@@ -1,4 +1,4 @@
-#1. use dict, list, and counter
+# use dict, list, and counter
 class RandomizedSet:
 
     def __init__(self):
@@ -25,7 +25,6 @@ class RandomizedSet:
             self.counter.pop()
             del self.elements[val]
             return True
-                
         
         return False
     

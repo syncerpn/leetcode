@@ -1,4 +1,4 @@
-#1. prefix sum to achieve O(1)
+# prefix sum to achieve O(1)
 class NumArray:
 
     def __init__(self, nums: List[int]):
