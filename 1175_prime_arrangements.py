@@ -1,12 +1,15 @@
+# count arrangements of primes multiply with count arrangements of non-primes
+# memoi + math
 class Solution:
     _d = {}
     def numPrimeArrangements(self, n: int) -> int:
+        MOD = 10 ** 9 + 7
         def factori(c):
             if c in Solution._d:
                 return Solution._d[c]
             r = 1
             for i in range(1, c+1):
-                r = (r * i) % (10 ** 9 + 7)
+                r = (r * i) % MOD
             Solution._d[c] = r
             return r
 
@@ -26,4 +29,4 @@ class Solution:
             if is_prime(k):
                 c += 1
                 
-        return factori(c)
+        return factori(c) * factori(n-c) % MOD
