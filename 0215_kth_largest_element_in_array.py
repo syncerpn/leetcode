@@ -4,7 +4,7 @@
 # lets not care about space this time, because inplace swapping can be easily implemented on top of this
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        # we keep filtering out some values in nums until we found kth
+        # we keep filtering out some values in nums until we find kth
         while nums:
             l = []
             r = []
