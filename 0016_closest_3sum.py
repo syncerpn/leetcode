@@ -1,22 +1,19 @@
 # O(N2) approach using two pointers to iterate over all triplets
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
-        nums = sorted(nums)
-        res = nums[0] + nums[1] + nums[2]
-        d = target - res
-        i = 0
-        while i < len(nums) - 2:
-            l = i + 1
-            r = len(nums) - 1
-            while l < r:
-                tmp = nums[i] + nums[l] + nums[r]
-                if tmp == target:
-                    return target
-                if abs(target-tmp) < abs(target-res):
-                    res = tmp
-                if tmp > target:
-                    r -= 1
+        nums.sort()
+        n = len(nums)
+        ans = nums[0] + nums[1] + nums[2]
+        for i in range(n-2):
+            j, k = i+1, n-1
+            while j < k:
+                s = nums[i] + nums[j] + nums[k]
+                if target == s:
+                    return s
+                if abs(target - s) < abs(target - ans):
+                    ans = s
+                if target > s:
+                    j += 1
                 else:
-                    l += 1
-            i += 1
-        return res
+                    k -= 1
+        return ans
