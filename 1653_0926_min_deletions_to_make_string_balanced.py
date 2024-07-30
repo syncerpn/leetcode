@@ -1,3 +1,4 @@
+# same as #0926
 # count subarrays of only a and b
 # pairing deletion
 class Solution:
@@ -26,4 +27,18 @@ class Solution:
         ans = len(s)
         for p, q in zip(a[1:], b[:-1]):
             ans = min(ans, p + q)
+        return ans
+
+# much better simplified solution
+# once encounter an "a", we may choose to delete one more "a" or all "b" found so far
+# pick either way with smaller move
+class Solution:
+    def minimumDeletions(self, s: str) -> int:
+        ans = 0
+        b = 0
+        for c in s:
+            if c == "a":
+                ans = min(b, ans+1)
+            else:
+                b += 1
         return ans
