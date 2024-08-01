@@ -1,11 +1,13 @@
+# backtracking
+# trying to place k queens in a board starting from row i and other queens position in p
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        row = [False] * n
+        # row = [False] * n
         col = [False] * n
         dgf = [False] * (2*n-1)
         dgb = [False] * (2*n-1)
         ans = []
-        def backtrack(k, p):
+        def backtrack(k, i, p):
             if k == 0:
                 t = [["."] * n for _ in range(n)]
                 for i, j in p:
@@ -13,26 +15,21 @@ class Solution:
                 t = ["".join(ti) for ti in t]
                 ans.append(t)
             else:
-                for i in range(n):
-                    if row[i]:
-                        continue
-                    row[i] = True
-                    for j in range(n):
-                        if col[j]:
-                            continue
+                for j in range(n):
+                    if not col[j] and not dgf[n-1+j-i] and not dgb[i+j]:
+                        # row[i] = True
                         col[j] = True
-                        if not dgf[n-1+j-i] and not dgb[i+j]:
-                            dgf[n-1+j-i] = True
-                            dgb[i+j] = True
-                            p.append([i, j])
-                            
-                            backtrack(k-1, p)
+                        dgf[n-1+j-i] = True
+                        dgb[i+j] = True
+                        p.append([i, j])
+                        
+                        backtrack(k-1, i+1, p)
 
-                            p.pop()
-                            dgf[n-1+j-i] = False
-                            dgb[i+j] = False
+                        p.pop()
+                        dgf[n-1+j-i] = False
+                        dgb[i+j] = False
                         col[j] = False
-                    row[i] = False
+                        # row[i] = False
 
-        backtrack(n, [])
+        backtrack(n, 0, [])
         return ans
