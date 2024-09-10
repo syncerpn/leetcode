@@ -32,3 +32,11 @@ class Solution:
         i, ni = s[-1]
         ans += (n-1 - i) * ni
         return ans
+
+# best explanation with dp (by ye15)
+# Providing an alternative view via dp which I believe is more straightforward to understand.
+# Define dp[i] as the maximum score ending at i. Boundary condition is dp[0] == 0 and dp[-1] gives the answer.
+# dp[1] = dp[0] + nums[0]
+# dp[2] = max(dp[0]+2*nums[0], dp[1]+nums[1]) = max(dp[1]+nums[0], dp[1]+nums[1]) = dp[1] + max(nums[0], nums[1])
+# dp[3] = max(dp[0]+3*nums[0], dp[1]+2*nums[1], dp[2]+nums[2]) = max(dp[1]+2*max(nums[0], nums[1]), dp[2]+nums[2])=max(dp[2]+max(nums[0], nums[1]), dp[2]+nums[2]) = dp[2]+max(nums[0], nums[1], nums[2])
+# This goes on... namely,
