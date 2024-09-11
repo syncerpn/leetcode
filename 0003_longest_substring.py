@@ -18,3 +18,16 @@ class Solution:
 
         m = r-l if m < r-l else m
         return m
+
+# revisit on neetcode with a compact code
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l = -1
+        d = {}
+        ans = 0
+        for r, c in enumerate(s):
+            if c in d and l < d[c]:
+                l = d[c]
+            d[c] = r
+            ans = max(ans, r-l)
+        return ans

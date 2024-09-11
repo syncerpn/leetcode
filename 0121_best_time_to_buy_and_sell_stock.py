@@ -23,3 +23,17 @@ class Solution:
         for p in prices:
             tk0, tk1 = max(tk0, tk1 + p), max(tk1, -p)
         return tk0
+
+# replay this problem on neetcode
+# now with logical thinking and exp with dp
+# solved it with compact code
+# iterate and try to sell at a price
+# where dpb is best buy that we have made for any price previous to the current one
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        dpb = prices[0]
+        ans = 0
+        for p in prices[1:]:
+            ans = max(ans, p - dpb)
+            dpb = min(dpb, p)
+        return ans
