@@ -15,3 +15,10 @@ class Solution:
         for i, j in enumerate(sorted_indices):
             rank[j-1] = indices[i]
         return rank
+
+# replay this in potd
+# make it compact
+class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        d = {a: i+1 for i, a in enumerate(sorted(list(set(arr))))}
+        return [d[a] for a in arr]
