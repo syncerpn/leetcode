@@ -27,3 +27,22 @@ class Solution:
             l_max = max(l, l_max)
         
         return l_max
+
+# revisit it today, so decide to make it more compact
+# and name it loudly union-find
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        nums = set(nums)
+        ans = 0
+        while nums:
+            n = nums.pop()
+            l, r, k = n, n, 1
+            while (l := l - 1) in nums:
+                nums.discard(l)
+                k += 1
+            while (r := r + 1) in nums:
+                nums.discard(r)
+                k += 1
+            ans = max(ans, k)
+        
+        return ans
