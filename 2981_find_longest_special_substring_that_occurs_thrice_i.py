@@ -18,3 +18,31 @@ class Solution:
                     ans = k
                     break
         return ans
+
+# much faster using the characteristics of special strings
+class Solution:
+    def maximumLength(self, s: str) -> int:
+        d = {}
+        p = "."
+        for c in s:
+            if c != p[-1]:
+                p = c
+            else:
+                p += c
+            if p not in d:
+                d[p] = 0
+            d[p] += 1
+        
+        ans = -1
+        for c in d:
+            if d[c] >= 3:
+                ans = max(ans, len(c))
+            elif len(c) >= 3:
+                if d[c[:-1]] >= 2:
+                    ans = max(ans, len(c)-1)
+                else:
+                    ans = max(ans, len(c)-2)
+            elif len(c) == 2:
+                if d[c[:-1]] >= 2:
+                    ans = max(ans, len(c)-1)
+        return ans
