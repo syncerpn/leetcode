@@ -9,3 +9,8 @@ class Solution:
 class Solution:
     def minimumLength(self, s: str) -> int:
         return sum(2 - (v % 2) for _, v in Counter(list(s)).items())
+
+# further
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        return sum(2 - (v % 2) for v in Counter(s).values())
