@@ -32,3 +32,20 @@ class Solution:
                 d[n] = 0
             d[n] += 1
         return d[m]
+
+# another way lol
+class Solution:
+    def countMaxOrSubsets(self, nums: List[int]) -> int:
+        n = len(nums)
+        m = reduce(lambda x, y: x | y, nums)
+        ans = [0]
+
+        def dfs(i, s):
+            if s == m:
+                ans[0] += 1 << (n - i)
+            elif i < n:
+                dfs(i+1, s)
+                dfs(i+1, s | nums[i])
+        
+        dfs(0, 0)
+        return ans[0]
