@@ -1,5 +1,7 @@
 # dp solution
 # need revisit
+# new algorithm to learn, and it is actually a good one
+# mcm or matrix chain multiplication
 class Solution:
     def minScoreTriangulation(self, values: List[int]) -> int:
         n = len(values)
