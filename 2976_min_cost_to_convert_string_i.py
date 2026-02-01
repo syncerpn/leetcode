@@ -59,3 +59,40 @@ class Solution:
                 return -1
             ans += d[A[a]][A[b]]
         return ans
+
+# replayed later with the same idea shortest path
+class Solution:
+    def minimumCost(self, source: str, target: str, original: List[str], changed: List[str], cost: List[int]) -> int:
+        g = {}
+        for a, b, c in zip(original, changed, cost):
+            if a not in g:
+                g[a] = {}
+            if b not in g[a]:
+                g[a][b] = float("inf")
+            g[a][b] = min(g[a][b], c)
+        
+        def find_shortest_path(s):
+            v = set()
+            h = [(0, s)]
+            while h:
+                c, a = heapq.heappop(h)
+                if a not in g[s]:
+                    g[s][a] = c
+                else:
+                    g[s][a] = min(g[s][a], c)
+                v.add(a)
+                if a in g:
+                    for b in g[a]:
+                        if b not in v:
+                            heapq.heappush(h, (g[a][b] + c, b))
+        
+        for a in list(set(original)):
+            find_shortest_path(a)
+        
+        ans = 0
+        for a, b in zip(source, target):
+            if a != b:
+                if a not in g or b not in g[a]:
+                    return -1
+                ans += g[a][b]
+        return ans
