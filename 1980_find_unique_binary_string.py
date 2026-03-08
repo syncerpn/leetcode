@@ -22,3 +22,20 @@ class Solution:
 
 # maybe we could guess randomly a number within the range and check
 # this one has very high success rate as n increases
+
+# simple one
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        n = len(nums)
+        for a in range(n+1):
+            b = bin(a)[2:]
+            s = "0" * (n - len(b)) + b
+            if s not in nums:
+                break
+        return s
+
+# cantor diagonal, math-based is always crazy
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        flip = lambda x: '0' if x == '1' else '1'
+        return ''.join(map(flip,[nums[i][i] for i in range(len(nums))]))
