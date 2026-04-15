@@ -1,7 +1,7 @@
 # going both directions at the same speed
 # stop right when one found
 class Solution:
-    def closetTarget(self, words: List[str], target: str, startIndex: int) -> int:
+    def closestTarget(self, words: List[str], target: str, startIndex: int) -> int:
         n = len(words)
         if words[startIndex] == target:
             return 0
