@@ -14,4 +14,4 @@ class Solution:
                         c += 1
                     box[i][j] = "."
 
-        return zip(*box[::-1])
+        return list(zip(*box[::-1]))
