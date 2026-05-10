@@ -2,9 +2,8 @@
 # but also need to handle the case with duplicated numbers
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        n = len(nums)
         l = 0
-        r = n - 1
+        r = len(nums) - 1
         
         while l < r:
             m = (r + l) // 2
@@ -14,4 +13,4 @@ class Solution:
                 r = m
             else:
                 r -= 1
-        return nums[r % n]
+        return nums[r]
