@@ -1,0 +1,12 @@
+# half array and index displacement
+class Solution:
+    def singleNonDuplicate(self, nums: List[int]) -> int:
+        l = 0
+        r = len(nums) // 2
+        while l < r:
+            m = (l + r) // 2
+            if nums[2*m] == nums[2*m+1]:
+                l = m + 1
+            else:
+                r = m
+        return nums[2*r]
